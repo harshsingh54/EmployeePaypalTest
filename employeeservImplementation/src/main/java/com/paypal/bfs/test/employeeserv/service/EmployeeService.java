@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.paypal.bfs.test.employeeserv.api.datamodel.Employee;
+import com.paypal.bfs.test.employeeserv.exception.EmployeeNotFoundException;
 import com.paypal.bfs.test.employeeserv.repository.EmployeeRepository;
 
 @Component
@@ -15,10 +16,13 @@ public class EmployeeService {
 	EmployeeRepository empRepository;
 	
 	public Employee getEmployeeById(String id) {
-		Optional<Employee> empOpt=empRepository.findById(id);
+		Optional<Employee> empOpt=empRepository.findById(Integer.valueOf(id));
 		Employee emp=null;
 		if(empOpt.isPresent()) {
 			emp=empOpt.get();
+		}else {
+			System.out.println("details not found!");
+			throw new EmployeeNotFoundException(id);
 		}
 		return emp;
 	}

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.paypal.bfs.test.employeeserv.api.datamodel.Employee;
 
 @Repository
-public interface EmployeeRepository extends CrudRepository<Employee, String> {
+public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
 }

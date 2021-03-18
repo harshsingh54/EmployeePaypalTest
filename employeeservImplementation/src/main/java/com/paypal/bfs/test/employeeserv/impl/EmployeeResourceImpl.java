@@ -2,10 +2,14 @@ package com.paypal.bfs.test.employeeserv.impl;
 
 import com.paypal.bfs.test.employeeserv.api.EmployeeResource;
 
+import java.net.URI;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 import com.paypal.bfs.test.employeeserv.api.datamodel.Employee;
 import com.paypal.bfs.test.employeeserv.service.EmployeeService;
 
@@ -35,6 +39,12 @@ public class EmployeeResourceImpl implements EmployeeResource {
 	public ResponseEntity<Integer> saveEmployee(Employee emp) {
 		// TODO Auto-generated method stub
 		int id=empService.saveEmployee(emp);
-		return new ResponseEntity<>(id,HttpStatus.OK);
+		URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(id)
+                .toUri();
+		
+		return ResponseEntity.created(location).build();
 	}
 }

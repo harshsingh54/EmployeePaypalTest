@@ -63,14 +63,14 @@ public class Employee {
         return id;
     }
 
-    /**
-     * employee id
-     * 
-     */
-    @JsonProperty("id")
-    public void setId(Integer id) {
-        this.id = id;
-    }
+//    /**
+//     * employee id
+//     * 
+//     */
+//    @JsonProperty("id")
+//    public void setId(String id) {
+//        this.id = Integer.valueOf(id);
+//    }
 
     /**
      * first name
