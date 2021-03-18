@@ -13,6 +13,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.paypal.bfs.test.employeeserv.api.datamodel.Employee;
 import com.paypal.bfs.test.employeeserv.service.EmployeeService;
 
+import jakarta.validation.Valid;
+
 /**
  * Implementation class for employee resource.
  */
@@ -36,7 +38,7 @@ public class EmployeeResourceImpl implements EmployeeResource {
     }
 
 	@Override
-	public ResponseEntity<Integer> saveEmployee(Employee emp) {
+	public ResponseEntity<Integer> saveEmployee(@Valid Employee emp) {
 		// TODO Auto-generated method stub
 		int id=empService.saveEmployee(emp);
 		URI location = ServletUriComponentsBuilder

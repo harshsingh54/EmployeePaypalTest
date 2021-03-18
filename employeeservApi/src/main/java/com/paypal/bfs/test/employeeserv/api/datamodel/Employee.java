@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
@@ -27,6 +29,8 @@ public class Employee {
      */
     @JsonProperty("first_name")
     @JsonPropertyDescription("first name")
+	@NotNull
+	@Size(min=2, max=25)
     private String firstName;
     /**
      * last name
@@ -35,6 +39,8 @@ public class Employee {
      */
     @JsonProperty("last_name")
     @JsonPropertyDescription("last name")
+	@NotNull
+	@Size(min=2, max=25)
     private String lastName;
     /**
      * date of birth
@@ -43,15 +49,18 @@ public class Employee {
      */
     @JsonProperty("date_of_birth")
     @JsonPropertyDescription("date of birth")
+	@NotNull
+	@Size(min=2, max=15)
     private String dateOfBirth;
     /**
      * address
      * (Required)
      * 
      */
-    @Embedded
+    @Embedded    
     @JsonProperty("address")
     @JsonPropertyDescription("address")
+    @NotNull
     private Address address;
     
     /**
@@ -151,6 +160,27 @@ public class Employee {
     @JsonProperty("address")
     public void setAddress(Address address) {
         this.address = address;
+    }
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("firstName");
+        sb.append('=');
+        sb.append(((this.firstName == null)?"<null>":this.firstName));
+        sb.append(',');
+        sb.append("lastName");
+        sb.append('=');
+        sb.append(((this.lastName == null)?"<null>":this.lastName));
+        sb.append(',');
+        sb.append("dateOfBirth");
+        sb.append('=');
+        sb.append(((this.dateOfBirth == null)?"<null>":this.dateOfBirth));
+        sb.append(',');
+        sb.append("address");
+        sb.append('=');
+        sb.append(((this.address == null)?"<null>":this.address));
+        return sb.toString();
     }
 
 }

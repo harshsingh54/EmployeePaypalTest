@@ -1,6 +1,8 @@
 package com.paypal.bfs.test.employeeserv.api.datamodel;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
@@ -8,8 +10,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 @Embeddable
 public class Address {
 	
-	 @JsonProperty("line1")
+		
+	 	@JsonProperty("line1")
 	    @JsonPropertyDescription("line1")
+	 	@NotNull
+	 	@Size(min=2, max=25)
 	    private String line1;
 	    /**
 	     * line2
@@ -23,25 +28,47 @@ public class Address {
 	     * (Required)
 	     * 
 	     */
+	    
 	    @JsonProperty("city")
 	    @JsonPropertyDescription("city")
+	    @NotNull
+	    @Size(min=2, max=25)
 	    private String city;
 	    /**
 	     * state
 	     * (Required)
 	     * 
 	     */
+	    
 	    @JsonProperty("state")
 	    @JsonPropertyDescription("state")
+	    @NotNull
+	    @Size(min=2, max=25)
 	    private String state;
 	    /**
 	     * zip code
 	     * (Required)
 	     * 
 	     */
+	    
 	    @JsonProperty("zip_code")
 	    @JsonPropertyDescription("zip code")
+	    @NotNull
+	    @Size(min=2, max=15)
 	    private String zipCode;
+	    
+	    /**
+	     * Country
+	     * (Required)
+	     * 
+	     */
+	    
+	    @JsonProperty("country")
+	    @JsonPropertyDescription("country")
+	    @NotNull
+	    @Size(min=2, max=15)
+	    private String country;
+	    
 
 	    /**
 	     * line1
@@ -141,6 +168,45 @@ public class Address {
 	        this.zipCode = zipCode;
 	    }
 
+	    /**
+	     * Country
+	     * (Required)
+	     * 
+	     */
+	    @JsonProperty("country")
+	    public String getCountry() {
+	        return country;
+	    }
 
+	    /**
+	     * Country
+	     * (Required)
+	     * 
+	     */
+	    @JsonProperty("country")
+	    public void setCountry(String country) {
+	        this.country = country;
+	    }
+	    
+	    @Override
+	    public String toString() {
+	        StringBuilder sb = new StringBuilder();
+	        sb.append("line1");
+	        sb.append('=');
+	        sb.append(((this.line1 == null)?"<null>":this.line1));
+	        sb.append(',');
+	        sb.append("city");
+	        sb.append('=');
+	        sb.append(((this.city == null)?"<null>":this.city));
+	        sb.append(',');
+	        sb.append("state");
+	        sb.append('=');
+	        sb.append(((this.state == null)?"<null>":this.state));
+	        sb.append(',');
+	        sb.append("zipCode");
+	        sb.append('=');
+	        sb.append(((this.zipCode == null)?"<null>":this.zipCode));
+	        return sb.toString();
+	    }
 
 }

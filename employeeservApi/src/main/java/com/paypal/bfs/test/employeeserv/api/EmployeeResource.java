@@ -1,6 +1,9 @@
 package com.paypal.bfs.test.employeeserv.api;
 
 import com.paypal.bfs.test.employeeserv.api.datamodel.*;
+
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,5 +29,5 @@ public interface EmployeeResource {
     // ----------------------------------------------------------
     
     @PostMapping("/v1/bfs/employees/")
-    ResponseEntity<Integer> saveEmployee(@RequestBody Employee emp);
+    ResponseEntity<Integer> saveEmployee(@Valid @RequestBody Employee emp);
 }

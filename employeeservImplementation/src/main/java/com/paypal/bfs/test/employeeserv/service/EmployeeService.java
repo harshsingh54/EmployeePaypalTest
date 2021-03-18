@@ -21,7 +21,6 @@ public class EmployeeService {
 		if(empOpt.isPresent()) {
 			emp=empOpt.get();
 		}else {
-			System.out.println("details not found!");
 			throw new EmployeeNotFoundException(id);
 		}
 		return emp;

@@ -14,5 +14,11 @@ public class EmployeeExceptionHandler {
 		
 	}
 	
+	@ExceptionHandler(IllegalArgumentException.class)
+	@ResponseStatus(value=HttpStatus.BAD_REQUEST, reason="Employee json missing required fields")
+	public void handleIllegalArguments() {
+		
+	}
+	
 
 }

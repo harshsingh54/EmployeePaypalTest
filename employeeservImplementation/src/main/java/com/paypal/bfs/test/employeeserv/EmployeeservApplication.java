@@ -28,6 +28,7 @@ public class EmployeeservApplication {
     	addr.setLine2("MG Road");
     	addr.setState("KA");
     	addr.setZipCode("56001");
+    	addr.setCountry("India");
     	emp.setAddress(addr);
     	return emp;
     }
