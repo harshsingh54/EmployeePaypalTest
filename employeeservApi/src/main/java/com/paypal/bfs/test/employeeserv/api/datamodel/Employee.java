@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -37,9 +38,9 @@ public class Employee {
      * (Required)
      * 
      */
+    @NotNull
     @JsonProperty("last_name")
     @JsonPropertyDescription("last name")
-	@NotNull
 	@Size(min=2, max=25)
     private String lastName;
     /**
@@ -61,6 +62,7 @@ public class Employee {
     @JsonProperty("address")
     @JsonPropertyDescription("address")
     @NotNull
+    @Valid
     private Address address;
     
     /**
@@ -158,7 +160,7 @@ public class Employee {
      * 
      */
     @JsonProperty("address")
-    public void setAddress(Address address) {
+    public void setAddress(@Valid Address address) {
         this.address = address;
     }
     
